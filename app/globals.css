@@ -1,26 +1,207 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #087a58;
+  --color-primary-strong: #066748;
+  --color-primary-ink: #065f43;
+  --color-primary-soft: #eefaf5;
+  --color-primary-soft-2: #dcf3ea;
+  --color-primary-border: #b9e6d6;
+  --color-primary-bright: #34d399;
+  --color-secondary: #0d1117;
+  --color-surface: #ffffff;
+  --color-surface-2: #fbfcfd;
+  --color-surface-muted: #f7f8fa;
+  --color-surface-sunken: #f2f4f7;
+  --color-on-surface: #363c47;
+  --color-on-surface-strong: #0d1117;
+  --color-on-surface-variant: #5b6472;
+  --color-on-surface-muted: #697382;
+  --color-outline: #e7eaef;
+  --color-outline-strong: #d6dbe3;
+  --color-error: #d61f26;
+
+  --font-sans: var(--font-plus-jakarta-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-full: 9999px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #087a58;
+  --bg-primary-strong: #066748;
+  --bg-primary-ink: #065f43;
+  --bg-primary-soft: #eefaf5;
+  --bg-primary-soft-2: #dcf3ea;
+  --bg-primary-border: #b9e6d6;
+  --bg-primary-bright: #34d399;
+  --bg-secondary: #0d1117;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #fbfcfd;
+  --bg-surface-muted: #f7f8fa;
+  --bg-surface-sunken: #f2f4f7;
+  --text-on-surface: #363c47;
+  --text-on-surface-strong: #0d1117;
+  --text-on-surface-variant: #5b6472;
+  --text-on-surface-muted: #697382;
+  --border-outline: #e7eaef;
+  --border-outline-strong: #d6dbe3;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles matching DESIGN.md */
+body {
+  font-family: var(--font-plus-jakarta-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #363c47;
+  background-color: #ffffff;
+  font-size: 17px;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+::selection {
+  background-color: #dcf3ea;
+  color: #065f43;
+}
+
+/* Custom shadows */
+.shadow-resting {
+  box-shadow: 0 1px 3px rgba(13, 17, 23, 0.05), 0 6px 16px -10px rgba(13, 17, 23, 0.14);
+}
+
+.shadow-raised {
+  box-shadow: 0 2px 6px rgba(13, 17, 23, 0.04), 0 18px 44px -22px rgba(13, 17, 23, 0.22);
+}
+
+.shadow-float {
+  box-shadow: 0 4px 10px rgba(13, 17, 23, 0.05), 0 34px 70px -30px rgba(13, 17, 23, 0.28);
+}
+
+.shadow-input {
+  box-shadow: 0 1px 2px rgba(13, 17, 23, 0.04);
+}
+
+/* Monospace font utility */
+.font-mono-code {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+/* Fluid typography utilities matching DESIGN.md */
+.font-headline-display {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: clamp(36px, 5.5vw, 60px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.font-headline-lg {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: clamp(31px, 4vw, 47px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.font-headline-md {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: clamp(23px, 2.5vw, 29px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.font-stat-number {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-size: clamp(44px, 4.5vw, 52px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.font-body-lg {
+  font-size: clamp(17.5px, 2vw, 20px);
+  line-height: 1.72;
+}
+
+.font-body-md {
+  font-size: 17px;
+  line-height: 1.72;
+  text-wrap: pretty;
+}
+
+.font-body-sm {
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.font-label-lg {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.font-label-md {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.font-label-sm {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Scanline pattern for Headline Card */
+.scanline-bg {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(0, 0, 0, 0.4) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Ticker animation */
+@keyframes ticker {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 46s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker {
+    animation: none;
+  }
+}
+
+/* Custom interactive transitions matching DESIGN.md */
+.transition-editorial {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
